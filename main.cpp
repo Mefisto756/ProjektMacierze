@@ -96,7 +96,7 @@ int main()
 						if(sprawdzenieCzyMacierzIstnieje(B)==1)
 							odwrotnaMacierz(B);
 							drukujMacierz(D);
-						//lub
+						//lb
 						if(sprawdzenieCzyMacierzIstnieje(C)==1)
 							odwrotnaMacierz(C);
 							drukujMacierz(D);
