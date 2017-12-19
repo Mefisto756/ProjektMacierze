@@ -2,6 +2,7 @@
 
 void wczytajMacierz(macierz &A)
 {
+	cout<<"\nPodaj wspolczynniki: "<<endl;
 	for (int i = 0; i < M; ++i)
 	{
 		for (int j = 0; j < N; ++j)
@@ -9,7 +10,8 @@ void wczytajMacierz(macierz &A)
 			cin>>A.T[i][j];
 		}
 	}
-
+	A.istnieje = true;
+	cout<<endl;
 }
 
 void drukujMacierz(macierz &A)
@@ -25,10 +27,22 @@ void drukujMacierz(macierz &A)
 	}
 }
 
-void dodawanieMacierzy(macierz &A, macierz &B, macierz &C)
+void dodawanieMacierzy(macierz &A, macierz &B, macierz &D)
 {
-	//dodanie macierzy
-	drukujMacierz(D);
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < N; j++) {
+			D.T[i][j]=A.T[i][j]+B.T[i][j];
+		}
+	}
+}
+
+void roznicaMacierzy(macierz &A, macierz &B, macierz &D)
+{
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < N; j++) {
+			D.T[i][j]=A.T[i][j]-B.T[i][j];
+		}
+	}
 }
 
 int mnozenieWierszKolumna(macierz &A, macierz &B, int wiersz, int kolumna)
@@ -44,7 +58,7 @@ int mnozenieWierszKolumna(macierz &A, macierz &B, int wiersz, int kolumna)
 	return suma;
 }
 
-void mnozenieMacierzy(macierz &A, macierz &B)
+void mnozenieMacierzy(macierz &A, macierz &B, macierz &D)
 {
 	for (int i = 0; i < M; ++i)
 	{
@@ -60,23 +74,17 @@ int wyznacznikMacierzy(macierz &A)
 	//wyznacnzik
 }
 
-void odwrotnaMacierz(macierz &A)
+void odwrotnaMacierz(macierz &A, macierz &D)
 {
 	//odwracanie macierzy
 }
 
-void rozwiazywanieRownania(macierz &A, macierz &B, macierz &C)
+void rozwiazywanieRownania(macierz &A, macierz &B, macierz &C, macierz &D, macierz &E, macierz &F)
 {
 	//rozwiazywanie rownana  AX + B = C
-}
+	//X = A^-1*(C-B)
+	roznicaMacierzy(C,B,D);
+	odwrotnaMacierz(A,E);
+	mnozenieMacierzy(E,D,F);
 
-int sprawdzenieCzyMacierzIstnieje(macierz &A)
-{
-	int wynik = 0;
-	//sprawdzenie czy istnieje macierz, tak wynik++
-	if (wynik == 0)
-	{
-		cout<<"Macierz nie istnieje !!!!!!"<<endl;
-	}
-	return wynik;
 }
