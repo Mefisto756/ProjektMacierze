@@ -69,9 +69,30 @@ void mnozenieMacierzy(macierz &A, macierz &B, macierz &D)
 	}
 }
 
-int wyznacznikMacierzy(macierz &A)
+void zmianaZnakuMacierzy(macierz &A)
 {
-	//wyznacnzik
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < N; j++) {
+			A.T[i][j]*=-1;
+		}
+	}
+}
+
+int wyznacznikMacierzy(macierz &A, int rozmiar)
+{
+	int wyznacznik = 0;
+
+	if (rozmiar == 2)
+	{
+		return((A.T[0][0]*A.T[1][1])-(A.T[1][0]*A.T[[0][1]));
+	}
+	else
+	{
+		for (int i = 0; i < rozmiar; i++) {
+
+		}
+		wycznacnzi += pow(-1, i) * A.T[0][n] * wyznacznikMacierzy(A, rozmiar-1); //wyznacznik + -1^i(okreslamy znak) * (wyraz z peirwszej kolumny) * det(summacierz, romiar -1)
+	}
 }
 
 void odwrotnaMacierz(macierz &A, macierz &D)

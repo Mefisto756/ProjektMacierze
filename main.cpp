@@ -324,7 +324,7 @@ int main()
 									case 'A':
 									{
 										if (A.istnieje) {
-											cout<<"Wyznacnzik A to "<<wyznacznikMacierzy(A);
+											cout<<"Wyznacnzik A to "<<wyznacznikMacierzy(A, M);
 										}
 										else
 											cout<<"Macierz A nie istnieje!!"<<endl
@@ -333,7 +333,7 @@ int main()
 									case 'B':
 									{
 										if (B.istnieje) {
-											cout<<"Wyznacnzik B to "<<wyznacznikMacierzy(B);
+											cout<<"Wyznacnzik B to "<<wyznacznikMacierzy(B, M);
 										}
 										else
 											cout<<"Macierz B nie istnieje!!"<<endl;
@@ -342,7 +342,7 @@ int main()
 									case 'C':
 									{
 										if (C.istnieje) {
-											cout<<"Wyznacnzik C to "<<wyznacznikMacierzy(C);
+											cout<<"Wyznacnzik C to "<<wyznacznikMacierzy(C, M);
 										}
 										else
 											cout<<"Macierz C nie istnieje!!"<<endl;
