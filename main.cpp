@@ -1,5 +1,5 @@
 
-#include "header.hpp"
+#include "headers/header.hpp"
 
 macierz A, B, C, D, E, F;
 

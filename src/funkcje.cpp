@@ -1,4 +1,4 @@
-#include "header.hpp"
+#include "headers/header.hpp"
 
 void wczytajMacierz(macierz &A)
 {
