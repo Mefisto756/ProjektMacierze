@@ -16,12 +16,20 @@ struct macierz
 	bool istnieje = false;
 };
 
+void MenuWypelnianie();
+void MenuDrukujMacierz();
+void MenuDodawanieMacierzy();
+void MenuMnozenieMacierzy();
+void MenuWyznacznikaMacierzy();
+void MenuMacierzOdwrotna();
+void MenuRozwiazywanieRownania();
+
 void wczytajMacierz(macierz &A);
 void drukujMacierz(macierz &A);
 void dodawanieMacierzy(macierz &A, macierz &B, macierz &D);
-void roznicaMacierzy(macierz &A, macierz &B, macierz &D)
+void roznicaMacierzy(macierz &A, macierz &B, macierz &D);
 void mnozenieMacierzy(macierz &A, macierz &B, macierz &D);
-void odwrotnaMacierz(macierz &A, macierz &D);
+void macierzOdwrotna(macierz &A, macierz &D);
 void rozwiazywanieRownania(macierz &A, macierz &B, macierz &C, macierz &D, macierz &E, macierz &F); 	//rozwiazywanie rownana  AX + B = C, C-B = D A^-1 = E F = X
 
 int mnozenieWierszKolumna(macierz &A, macierz &B, int wiersz, int kolumna);

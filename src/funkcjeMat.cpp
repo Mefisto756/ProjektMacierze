@@ -1,4 +1,4 @@
-#include "headers/header.hpp"
+#include "../headers/header.hpp"
 
 void wczytajMacierz(macierz &A)
 {
@@ -80,22 +80,22 @@ void zmianaZnakuMacierzy(macierz &A)
 
 int wyznacznikMacierzy(macierz &A, int rozmiar)
 {
-	int wyznacznik = 0;
+	//int wyznacznik = 0;
 
-	if (rozmiar == 2)
-	{
-		return((A.T[0][0]*A.T[1][1])-(A.T[1][0]*A.T[[0][1]));
-	}
-	else
-	{
-		for (int i = 0; i < rozmiar; i++) {
+	//if (rozmiar == 2)
+	//{
+	//	return((A.T[0][0]*A.T[1][1])-(A.T[1][0]*A.T[[0][1]));
+	//}
+	//else
+//	{
+	//	for (int i = 0; i < rozmiar; i++) {
 
-		}
-		wycznacnzi += pow(-1, i) * A.T[0][n] * wyznacznikMacierzy(A, rozmiar-1); //wyznacznik + -1^i(okreslamy znak) * (wyraz z peirwszej kolumny) * det(summacierz, romiar -1)
-	}
+	//	}
+	//	wycznacnzi += pow(-1, i) * A.T[0][n] * wyznacznikMacierzy(A, rozmiar-1); //wyznacznik + -1^i(okreslamy znak) * (wyraz z peirwszej kolumny) * det(summacierz, romiar -1)
+	//}
 }
 
-void odwrotnaMacierz(macierz &A, macierz &D)
+void macierzOdwrotna(macierz &A, macierz &D)
 {
 	//odwracanie macierzy
 }
@@ -105,7 +105,7 @@ void rozwiazywanieRownania(macierz &A, macierz &B, macierz &C, macierz &D, macie
 	//rozwiazywanie rownana  AX + B = C
 	//X = A^-1*(C-B)
 	roznicaMacierzy(C,B,D);
-	odwrotnaMacierz(A,E);
+	macierzOdwrotna(A,E);
 	mnozenieMacierzy(E,D,F);
 
 }
