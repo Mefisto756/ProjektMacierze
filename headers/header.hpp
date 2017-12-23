@@ -5,8 +5,8 @@
 
 #include <iostream>
 #include <cmath>
-#define M 2
-#define N 2
+#define M 5
+#define N 5
 
 using namespace std;
 
