@@ -31,7 +31,7 @@ void MenuWypelnianie()
             wczytajMacierz(B);
           else
             {
-              cout<<"\nMacierz A istnieje!! Czy chcesz nadpisac dane? (y/n)"<<endl;
+              cout<<"\nMacierz B istnieje!! Czy chcesz nadpisac dane? (y/n)"<<endl;
               cin>>wybor;
               if (wybor=='y')
                 wczytajMacierz(B);
@@ -44,7 +44,7 @@ void MenuWypelnianie()
             wczytajMacierz(C);
           else
             {
-              cout<<"\nMacierz A istnieje!! Czy chcesz nadpisac dane? (y/n)"<<endl;
+              cout<<"\nMacierz C istnieje!! Czy chcesz nadpisac dane? (y/n)"<<endl;
               cin>>wybor;
               if (wybor=='y')
                 wczytajMacierz(C);
@@ -63,51 +63,42 @@ void MenuDrukujMacierz()
 
   while(wybor=='y')
     {
-      cout<<"Ktora macierz wypelnic? (A,B,C):  ";
+      cout<<"Ktora macierz wyswietlic? (A,B,C):  ";
       cin >> wybor;
       switch (wybor)
       {
         case 'A':
         {
-          if(!A.istnieje)
-            wczytajMacierz(A);
+          if(A.istnieje)
+            drukujMacierz(A);
           else
             {
-              cout<<"\nMacierz A istnieje!! Czy chcesz nadpisac dane? (y/n)"<<endl;
-              cin>>wybor;
-              if (wybor=='y')
-                wczytajMacierz(A);
+              cout<<"\nMacierz A nie istnieje!!"<<endl;
             }
         }
         break;
         case 'B':
         {
-          if(!B.istnieje)
-            wczytajMacierz(B);
+          if(B.istnieje)
+            drukujMacierz(B);
           else
             {
-              cout<<"\nMacierz A istnieje!! Czy chcesz nadpisac dane? (y/n)"<<endl;
-              cin>>wybor;
-              if (wybor=='y')
-                wczytajMacierz(B);
+              cout<<"\nMacierz B nieistnieje!!"<<endl;
             }
         }
         break;
         case 'C':
         {
-          if(!C.istnieje)
-            wczytajMacierz(C);
+          if(C.istnieje)
+            drukujMacierz(C);
           else
             {
-              cout<<"\nMacierz A istnieje!! Czy chcesz nadpisac dane? (y/n)"<<endl;
-              cin>>wybor;
-              if (wybor=='y')
-                wczytajMacierz(C);
+              cout<<"\nMacierz C nieistnieje!!"<<endl;
             }
         }
         break;
       }
-      cout<<"Wypelnic inna macierz? (y/n)";
+      cout<<"Wyswietlic inna macierz? (y/n)";
       cin>>wybor;
     }
 }
@@ -209,7 +200,7 @@ void MenuDodawanieMacierzy()
   drukujMacierz(D);
 }
 
-void MenuMnozenieMacierzy()
+void MenuMnozenieMacierzyXmacierz()
 {
   char wybor = ' ';
   cout<<"Podaj pierwszy wyraz iloczynu (A,B,C): ";
@@ -227,19 +218,19 @@ void MenuMnozenieMacierzy()
       {
         case 'A':
         {
-          mnozenieMacierzy(A,A,D);
+          mnozenieMacierzyXmacierz(A,A,D);
           cout<<"A x A = ";
         }
         break;
         case 'B':
         {
-          mnozenieMacierzy(A,B,D);
+          mnozenieMacierzyXmacierz(A,B,D);
           cout<<"A x B = ";
         }
         break;
         case 'C':
         {
-          mnozenieMacierzy(A,C,D);
+          mnozenieMacierzyXmacierz(A,C,D);
           cout<<"A x C = ";
         }
         break;
@@ -255,19 +246,19 @@ void MenuMnozenieMacierzy()
       {
         case 'A':
         {
-          mnozenieMacierzy(B,A,D);
+          mnozenieMacierzyXmacierz(B,A,D);
           cout<<"B x A = ";
         }
         break;
         case 'B':
         {
-          mnozenieMacierzy(B,B,D);
+          mnozenieMacierzyXmacierz(B,B,D);
           cout<<"B x B = ";
         }
         break;
         case 'C':
         {
-          mnozenieMacierzy(B,C,D);
+          mnozenieMacierzyXmacierz(B,C,D);
           cout<<"B x C = ";
         }
         break;
@@ -283,19 +274,19 @@ void MenuMnozenieMacierzy()
       {
         case 'A':
         {
-          mnozenieMacierzy(C,A,D);
+          mnozenieMacierzyXmacierz(C,A,D);
           cout<<"C x A = ";
         }
         break;
         case 'B':
         {
-          mnozenieMacierzy(C,B,D);
+          mnozenieMacierzyXmacierz(C,B,D);
           cout<<"C x B = ";
         }
         break;
         case 'C':
         {
-          mnozenieMacierzy(C,C,D);
+          mnozenieMacierzyXmacierz(C,C,D);
           cout<<"C x C = ";
         }
         break;
@@ -319,7 +310,7 @@ void MenuWyznacznikaMacierzy()
         case 'A':
         {
           if (A.istnieje) {
-            cout<<"Wyznacnzik A to "<<wyznacznikMacierzy(A, M);
+            cout<<"Wyznacnzik A to "<<wyznacznikMacierzy(M, A.T);
           }
           else
             cout<<"Macierz A nie istnieje!!"<<endl;
@@ -328,7 +319,7 @@ void MenuWyznacznikaMacierzy()
         case 'B':
         {
           if (B.istnieje) {
-            cout<<"Wyznacnzik B to "<<wyznacznikMacierzy(B, M);
+            cout<<"Wyznacnzik B to "<<wyznacznikMacierzy(M, B.T);
           }
           else
             cout<<"Macierz B nie istnieje!!"<<endl;
@@ -337,14 +328,14 @@ void MenuWyznacznikaMacierzy()
         case 'C':
         {
           if (C.istnieje) {
-            cout<<"Wyznacnzik C to "<<wyznacznikMacierzy(C, M);
+            cout<<"Wyznacnzik C to "<<wyznacznikMacierzy(M, C.T);
           }
           else
             cout<<"Macierz C nie istnieje!!"<<endl;
         }
         break;
       }
-      cout<<"Policzyc kolejny wyznacznik? (y/n)";
+      cout<<"\nPoliczyc kolejny wyznacznik? (y/n)";
       cin>>wybor;
     }
 }

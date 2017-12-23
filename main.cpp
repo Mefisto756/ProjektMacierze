@@ -31,7 +31,7 @@ int main()
 						MenuDodawanieMacierzy();
 					break;
 					case 4:																																//mnozenie 2 macierzy
-						MenuMnozenieMacierzy();
+						MenuMnozenieMacierzyXmacierz();
 					break;
 					case 5:																																//liczenie wyznacznika macierzy
 						MenuWyznacznikaMacierzy();
