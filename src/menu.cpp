@@ -404,3 +404,11 @@ void MenuRozwiazywanieRownania()
     cout<<"Macierze nie istnieja!!";
 
 }
+
+//TESTY FUNKCJI
+
+void test()
+{
+
+
+}

@@ -5,8 +5,8 @@
 
 #include <iostream>
 #include <cmath>
-#define M 6
-#define N 6
+#define M 2
+#define N 2
 
 using namespace std;
 
@@ -40,6 +40,8 @@ void transponowaniMacierzy(macierz &A);
 void macierzDopelnienAlg(macierz &A, macierz &F, int rozmiar);
 
 int mnozenieWierszKolumna(macierz &A, macierz &B, int wiersz, int kolumna);
-double wyznacznikMacierzy(int rozmiar, double MT[M][N]);
+double wyznacznikMacierzy(int rozmiar, double T[M][N]);
 
+
+void test();
 #endif

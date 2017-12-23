@@ -43,7 +43,7 @@ int main()
 						MenuRozwiazywanieRownania();
 					break;
 				}
+				test();
 	}
-
 	return 0;
 }
