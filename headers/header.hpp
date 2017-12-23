@@ -5,14 +5,16 @@
 
 #include <iostream>
 #include <cmath>
+#include <string>
+#include <fstream>
+
 #define M 5
-#define N 5
 
 using namespace std;
 
 struct macierz
 {
-	double T[M][N];
+	double T[M][M];
 	bool istnieje = false;
 };
 
@@ -28,8 +30,6 @@ void MenuRozwiazywanieRownania();
 
 //FUNKCJE MATEMATYCZNE NA MACIERZACH
 
-void wczytajMacierz(macierz &A);
-void drukujMacierz(macierz &A);
 void dodawanieMacierzy(macierz &A, macierz &B, macierz &D);
 void roznicaMacierzy(macierz &A, macierz &B, macierz &D);
 void mnozenieMacierzyXmacierz(macierz &A, macierz &B, macierz &D);
@@ -40,8 +40,17 @@ void transponowaniMacierzy(macierz &A);
 void macierzDopelnienAlg(macierz &A, macierz &F, int rozmiar);
 
 int mnozenieWierszKolumna(macierz &A, macierz &B, int wiersz, int kolumna);
-double wyznacznikMacierzy(int rozmiar, double T[M][N]);
+double wyznacznikMacierzy(int rozmiar, double T[M][M]);
 
+//FUNKCJE PROGRAMU
+
+void wczytajMacierz(macierz &A);
+void drukujMacierz(macierz &A);
+void pobierzZpliku(string sciezka);	//LINUX
+void zapiszDoPliku(string sciezka);	//LINUX
+
+//TESTOWANIE
 
 void test();
+
 #endif

@@ -1,40 +1,10 @@
 #include "../headers/header.hpp"
 
-void wczytajMacierz(macierz &A)
-{
-	cout<<"\nPodaj wspolczynniki: "<<endl;
-
-	for (int i = 0; i < M; ++i)
-	{
-		for (int j = 0; j < N; ++j)
-		{
-			cin>>A.T[i][j];
-		}
-	}
-
-	A.istnieje = true;
-	cout<<endl;
-}
-
-void drukujMacierz(macierz &A)
-{
-	cout<<endl;
-
-	for (int i = 0; i < M; ++i)
-	{
-		for (int j = 0; j < N; ++j)
-		{
-			cout<<A.T[i][j]<<" ";
-		}
-		cout<<endl;
-	}
-}
-
 void dodawanieMacierzy(macierz &A, macierz &B, macierz &D)
 {
 	for (int i = 0; i < M; i++)
  	{
-		for (int j = 0; j < N; j++)
+		for (int j = 0; j < M; j++)
 	 	{
 			D.T[i][j]=A.T[i][j]+B.T[i][j];
 		}
@@ -45,7 +15,7 @@ void roznicaMacierzy(macierz &A, macierz &B, macierz &D)
 {
 	for (int i = 0; i < M; i++)
 	{
-		for (int j = 0; j < N; j++)
+		for (int j = 0; j < M; j++)
 		{
 			D.T[i][j]=A.T[i][j]-B.T[i][j];
 		}
@@ -58,7 +28,7 @@ int mnozenieWierszKolumna(macierz &A, macierz &B, int wiersz, int kolumna)
 
 	for (int i = 0; i < M;)
 	{
-		for (int j = 0; j < N; ++j, i++)
+		for (int j = 0; j < M; ++j, i++)
 		{
 			suma += A.T[wiersz][j] * B.T[i][kolumna];
 		}
@@ -70,18 +40,18 @@ void mnozenieMacierzyXmacierz(macierz &A, macierz &B, macierz &D)
 {
 	for (int i = 0; i < M; ++i)
 	{
-		for (int j = 0; j < N; ++j)
+		for (int j = 0; j < M; ++j)
 		{
 			D.T[i][j] = mnozenieWierszKolumna(A,B, i, j);
 		}
 	}
 }
 
-double wyznacznikMacierzy(int rozmiar, double mat[M][N])
+double wyznacznikMacierzy(int rozmiar, double mat[M][M])
 {
 		double det = 0;
 	  int c, i, j, podi, podj;
-    double podMat[M][N];
+    double podMat[M][M];
 
     if (rozmiar == 1)
     {
@@ -117,8 +87,8 @@ double wyznacznikMacierzy(int rozmiar, double mat[M][N])
 
 void mnozenieMacierzyXskalar(macierz &A, double skalar, int rozmiar)
 {
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < M; j++) {
 			A.T[i][j] *=skalar;
 		}
 	}
@@ -128,9 +98,9 @@ void mnozenieMacierzyXskalar(macierz &A, double skalar, int rozmiar)
 void transponowaniMacierzy(macierz &A)
 {
 	double tmp = 0;
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < M; i++)
 	{
-		for (int j = 0; j < N; j++)
+		for (int j = 0; j < M; j++)
 		{
 			if (j>i) {
 				tmp = A.T[i][j];
@@ -145,15 +115,15 @@ void macierzDopelnienAlg(macierz &A, macierz &F, int rozmiar)
 {
 	int podM = 0;
 	int podN = 0;
-	double podMacierz[N][N];
+	double podMacierz[M][M];
 	int h=0,g=0;
-	for (int p = 0; p < N; p++) 																					//wyciete wiersze
+	for (int p = 0; p < M; p++) 																					//wyciete wiersze
 	{
-		for (int i = 0; i < N; i++) 																				//wyciete kolumny
+		for (int i = 0; i < M; i++) 																				//wyciete kolumny
 		{
-			for (int j = 0; j < N; j++)
+			for (int j = 0; j < M; j++)
 			{
-				for (int k = 0; k < N; k++)
+				for (int k = 0; k < M; k++)
 				{
 					if (j==p || k == i)
 					{
@@ -162,7 +132,7 @@ void macierzDopelnienAlg(macierz &A, macierz &F, int rozmiar)
 					else
 					{
 						podMacierz[h][g] = A.T[j][k];
-						if (g<N-2)
+						if (g<M-2)
 						{
 							g++;
 						}
@@ -174,7 +144,7 @@ void macierzDopelnienAlg(macierz &A, macierz &F, int rozmiar)
 					}
 				}
 			}
-			F.T[p][i] = pow(-1,p+i) * wyznacznikMacierzy(N-1, podMacierz);
+			F.T[p][i] = pow(-1,p+i) * wyznacznikMacierzy(M-1, podMacierz);
 			g=0;
 			h=0;
 		}
@@ -183,12 +153,12 @@ void macierzDopelnienAlg(macierz &A, macierz &F, int rozmiar)
 
 void macierzOdwrotna(macierz &A, macierz &D)
 {
-	double wyznacznik = wyznacznikMacierzy(N,A.T);
+	double wyznacznik = wyznacznikMacierzy(M,A.T);
 	double skalar = 1/wyznacznik;
 
-	macierzDopelnienAlg(A,D, N);
+	macierzDopelnienAlg(A,D, M);
 	transponowaniMacierzy(D);
-	mnozenieMacierzyXskalar(D, skalar, N);
+	mnozenieMacierzyXskalar(D, skalar, M);
 }
 
 void rozwiazywanieRownania(macierz &A, macierz &B, macierz &C, macierz &D, macierz &E, macierz &F)
